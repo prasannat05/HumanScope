@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Human Detection System</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+        .container { margin-top: 50px; }
+        img { border: 5px solid #333; border-radius: 8px; max-width: 80%; }
+        .controls { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Human Detection & Localization</h1>
+    
+    <div class="controls">
+        <button onclick="location.href='/video_feed'">Use Live Webcam</button>
+        <hr>
+        <form action="/upload_feed" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="video/*, image/*">
+            <button type="submit">Upload and Detect</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h3>Output Stream:</h3>
+        <!-- This image tag points to our Flask routes -->
+        <img src="{{ url_for('video_feed') }}" id="stream">
+    </div>
+</body>
+</html>
